@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -9,7 +8,7 @@
     margin: 0;
     padding: 0;
   }
-   .container {
+  .container {
     text-align: center;
     margin-top: 20px;
   }
@@ -18,12 +17,12 @@
     margin-bottom: 20px;
   }
   .turn-indicator {
-    border: 2px black;
+    border: 2px solid black;
     padding: 10px;
     margin-bottom: 20px;
   }
   .win-condition {
-    border: 2px black; 
+    border: 2px solid black;
     padding: 10px;
     margin-bottom: 20px;
   }
@@ -59,16 +58,30 @@
 <div class="container">
   <div class="title">Tic Tac Toe</div>
   <div class="turn-indicator">X's Turn</div>
-  <div class="win-condition">Win Condition</div> 
-<div class="board">
-<script>
-const NUM_SQUARES = 9;
-for (let i = 0; i < NUM_SQUARES; i++) {
-  const id = "sq" + i;
-  document.write("<div class='square' id='" + id + "'></div>");
-}
-</script>
-</div>
+  <div class="win-condition">Win Condition</div>
+  <div class="board">
+    <script>
+      const NUM_ROWS = 3;
+      const NUM_COLS = 3;
+      const NUM_SQUARES = NUM_ROWS * NUM_COLS;
+
+      for (let i = 0; i < NUM_ROWS; i++) {
+        const row = document.createElement('div');
+        row.classList.add('row');
+        
+        for (let j = 0; j < NUM_COLS; j++) {
+          const squareIndex = i * NUM_COLS + j;
+          const id = "sq" + squareIndex;
+          const square = document.createElement('div');
+          square.className = 'square';
+          square.id = id;
+          row.appendChild(square);
+        }
+        
+        document.querySelector('.board').appendChild(row);
+      }
+    </script>
+  </div>
 </div>
 </body>
 </html>
